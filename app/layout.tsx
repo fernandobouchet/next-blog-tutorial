@@ -1,3 +1,5 @@
+import MyProfilePic from './components/MyProfilePic';
+import Navbar from './components/Navbar';
 import './globals.css';
 
 export const metadata = {
@@ -12,7 +14,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="dark:bg-zinc-950 dark:text-white">
+        <Navbar />
+        <MyProfilePic />
+        {children}
+      </body>
     </html>
   );
 }
