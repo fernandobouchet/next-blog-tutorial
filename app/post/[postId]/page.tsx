@@ -9,6 +9,13 @@ type Props = {
   };
 };
 
+export const generateStaticParams = () => {
+  const posts = getSortedPostsData();
+  return posts.map((post) => ({
+    postId: post.id,
+  }));
+};
+
 export const generateMetadata = async ({ params }: Props) => {
   const posts = getSortedPostsData();
   const { postId } = params;
@@ -29,8 +36,6 @@ export const generateMetadata = async ({ params }: Props) => {
 const Post = async ({ params }: Props) => {
   const posts = getSortedPostsData();
   const { postId } = params;
-
-  console.log(postId);
 
   if (!posts.find((post) => post.id === postId)) {
     notFound();
